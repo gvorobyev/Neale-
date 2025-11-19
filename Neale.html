@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACRED SILENCE | Conversations with the Soul</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Cover Section */
+        .cover {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .cover-image-container {
+            width: 90vw;
+            height: 70vh;
+            max-width: 1200px;
+            max-height: 700px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .cover-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: #f8f8f8;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .cover-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            color: #b8b8b8;
+            font-style: italic;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            animation: float 3s ease-in-out infinite;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            color: #fff;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Introduction Section */
+        .introduction {
+            min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5rem;
+        }
+
+        .intro-image {
+            flex: 1;
+            max-width: 600px;
+            height: 500px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85) contrast(1.1);
+        }
+
+        .intro-text {
+            flex: 1;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .intro-text h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            color: #f0f0f0;
+            line-height: 1.3;
+        }
+
+        .intro-text p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-align: center;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            color: #f0f0f0;
+        }
+
+        .artwork-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            align-items: start;
+        }
+
+        .artwork-image {
+            position: relative;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            transition: all 0.5s ease;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .artwork-image:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .artwork-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            filter: brightness(0.9);
+        }
+
+        .artwork-image:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .artwork-info {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .artwork-number {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            color: #f0f0f0;
+        }
+
+        .artwork-details {
+            font-size: 1.1rem;
+            color: #888;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Final Section */
+        .final-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .collage-item {
+            height: 250px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: brightness(0.8);
+        }
+
+        .collage-item:hover {
+            transform: scale(1.02);
+        }
+
+        .collage-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        .final-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-text h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            color: #f0f0f0;
+        }
+
+        .final-text p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #b0b0b0;
+            font-style: italic;
+        }
+
+        /* Modal Window */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5,5,5,0.98);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            width: 95%;
+            max-width: 1400px;
+            height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            animation: zoomIn 0.5s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+            font-size: 3.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.3);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .close:hover {
+            color: #ccc;
+            background: rgba(0,0,0,0.6);
+            transform: rotate(90deg);
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+        }
+
+        .nav-button:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev { left: 3rem; }
+        .next { right: 3rem; }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #8b7355, #c0a080);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #222;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #666;
+            background: #0a0a0a;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .introduction {
+                gap: 3rem;
+                padding: 3rem 2rem;
+            }
+            
+            .cover-image-container {
+                width: 95vw;
+                height: 65vh;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .introduction {
+                flex-direction: column;
+                min-height: auto;
+                padding: 4rem 2rem;
+            }
+            
+            .intro-image, .intro-text {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .intro-image {
+                height: 400px;
+                margin-bottom: 2rem;
+            }
+            
+            .artwork-pair {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .cover-title {
+                font-size: 2.5rem;
+            }
+            
+            .cover-image-container {
+                width: 95vw;
+                height: 60vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cover-title {
+                font-size: 2rem;
+                letter-spacing: 0.3em;
+            }
+
+            .cover-image-container {
+                width: 98vw;
+                height: 55vh;
+            }
+
+            .collage {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-button {
+                font-size: 2rem;
+                padding: 1rem;
+            }
+
+            .prev { left: 1.5rem; }
+            .next { right: 1.5rem; }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover-title {
+                font-size: 1.8rem;
+            }
+            
+            .cover-image-container {
+                height: 50vh;
+            }
+            
+            .collage {
+                grid-template-columns: 1fr;
+            }
+            
+            .collage-item {
+                height: 200px;
+            }
+            
+            .intro-text h2 {
+                font-size: 2rem;
+            }
+            
+            .intro-text p {
+                fontSize: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+
+    <!-- Cover Section -->
+    <section class="cover">
+        <div class="cover-image-container">
+            <img class="cover-image" src="https://i.ibb.co/HL887cBf/GV.jpg" alt="Conversations with the Soul">
+        </div>
+        <h1 class="cover-title">SACRED SILENCE</h1>
+        <p class="cover-subtitle">CONVERSATIONS WITH THE SOUL THROUGH ART</p>
+        <div class="scroll-indicator">⌄</div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <div class="intro-image">
+            <img id="intro-img" src="" alt="Art for Dialogue with the Soul">
+        </div>
+        <div class="intro-text">
+            <h2>OPEN THE DIALOGUE WITH YOUR SOUL</h2>
+            <p>Each image in this collection is an invitation to converse with your very Soul. There are no random lines or colors here - only messages awaiting your attention.</p>
+            <p>As Neale Donald Walsch wrote: "You are an eternal being having a temporary human experience." These visual meditations will help you remember this truth.</p>
+            <p>Allow the images to speak to you in the language of feelings, not words. In the silence between thoughts, a genuine dialogue with the Divine within you is born.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">VISUAL CONVERSATIONS</h2>
+        <!-- Artwork pairs will be generated by JavaScript -->
+    </section>
+
+    <!-- Final Section -->
+    <section class="final-section">
+        <div class="collage" id="collage">
+            <!-- Collage items will be generated by JavaScript -->
+        </div>
+        <div class="final-text">
+            <h2>HOW TO CONDUCT THESE CONVERSATIONS</h2>
+            <p>"There is no such place where God ends and you begin." Allow these images to become a bridge between your temporary self and eternal Being.</p>
+            <p>Look softly, breathe deeply, and ask questions from your heart. The answers will come not in words, but in a feeling of deep recognition and peace.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>SACRED SILENCE | VISUAL CONVERSATIONS WITH THE SOUL</p>
+        <p>INSPIRED BY "CONVERSATIONS WITH GOD" TRILOGY</p>
+        <p>© 2023 | PATH TO INNER UNITY</p>
+    </footer>
+
+    <!-- Modal Window -->
+    <div class="modal" id="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <button class="nav-button prev" onclick="changeImage(-1)">‹</button>
+        <button class="nav-button next" onclick="changeImage(1)">›</button>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Combined meditation artwork data with descriptions in style of "Conversations with God"
+        const artworks = [
+            {
+                meditation: 'https://i.ibb.co/XZV69W6p/1.jpg',
+                context: 'https://i.ibb.co/XkCwTWS9/1-2.jpg',
+                details: 'You are not a body having a soul. You are a soul having a body. Allow this knowing to fill every cell'
+            },
+            {
+                meditation: 'https://i.ibb.co/7x736pZW/1.jpg',
+                context: 'https://i.ibb.co/HLWsNqtJ/1-1.jpg',
+                details: 'Life begins at the end of your comfort zone. Expand your boundaries as this space expands'
+            },
+            {
+                meditation: 'https://i.ibb.co/MxQSz5Cr/2.jpg',
+                context: 'https://i.ibb.co/Y4HPMHqz/2-2.jpg',
+                details: 'You are eternal in this moment. No past, no future - only eternal Now'
+            },
+            {
+                meditation: 'https://i.ibb.co/9m0RTDgY/2.jpg',
+                context: 'https://i.ibb.co/TDy542xJ/2-1.jpg',
+                details: 'Focus not on what you see, but on WHO sees. The observer is who you are'
+            },
+            {
+                meditation: 'https://i.ibb.co/SXymrZPY/3.jpg',
+                context: 'https://i.ibb.co/XryJKPbZ/3-2.jpg',
+                details: 'Thoughts come and go like clouds. You are the sky that observes them'
+            },
+            {
+                meditation: 'https://i.ibb.co/23H8GHqG/3.jpg',
+                context: 'https://i.ibb.co/zpHRXQr/3-1.jpg',
+                details: 'Enlightenment is not an achievement, but a realization of what has been true all along'
+            },
+            {
+                meditation: 'https://i.ibb.co/CKwcxk4X/4.jpg',
+                context: 'https://i.ibb.co/nMTr01T9/4-2.jpg',
+                details: 'You are safe in this world. The universe is friendly to you, even when it seems otherwise'
+            },
+            {
+                meditation: 'https://i.ibb.co/q39V4Q69/4.jpg',
+                context: 'https://i.ibb.co/nNqb6d1L/4-1.jpg',
+                details: 'Balance is not the absence of movement, but the harmony of opposites'
+            },
+            {
+                meditation: 'https://i.ibb.co/1fNh8yGh/5.jpg',
+                context: 'https://i.ibb.co/1fc2cMwk/5-2.jpg',
+                details: 'Change is the only constant. Accept the flow of life, do not resist it'
+            },
+            {
+                meditation: 'https://i.ibb.co/V0LDzJNr/5.jpg',
+                context: 'https://i.ibb.co/xtNMwSyf/5-1.jpg',
+                details: 'Your path is unique, like this trace. Do not compare it with others'
+            },
+            {
+                meditation: 'https://i.ibb.co/7J0478jj/6.jpg',
+                context: 'https://i.ibb.co/1fQhrLMP/6-2.jpg',
+                details: 'Root yourself in the present moment. The earth beneath you is a reliable support for your journey'
+            },
+            {
+                meditation: 'https://i.ibb.co/rRFtwSvb/7.jpg',
+                context: 'https://i.ibb.co/wZ6M7xsc/7-1.jpg',
+                details: 'In the silence between thoughts, wisdom is born. Do not fear silence'
+            },
+            {
+                meditation: 'https://i.ibb.co/bgX4xnT8/7.jpg',
+                context: 'https://i.ibb.co/n84FPQH7/7-2.jpg',
+                details: 'Your inner light never goes out. Sometimes it just waits for you to pay attention to it'
+            },
+            {
+                meditation: 'https://i.ibb.co/Lh94bjd1/8.jpg',
+                context: 'https://i.ibb.co/Sw5Tvv3K/8-1.jpg',
+                details: 'Breath is the bridge between body and spirit. Follow it and you will find your way home'
+            },
+            {
+                meditation: 'https://i.ibb.co/NGZq9Yz/8.jpg',
+                context: 'https://i.ibb.co/99gPyFBj/8-2.jpg',
+                details: 'Every moment is a new beginning. The past does not define you unless you allow it'
+            },
+            {
+                meditation: 'https://i.ibb.co/JWxPdnpd/9.jpg',
+                context: 'https://i.ibb.co/zVxDzK5B/9-1.jpg',
+                details: 'Your consciousness is limitless like this sky. Do not limit it with old beliefs'
+            },
+            {
+                meditation: 'https://i.ibb.co/s4XSjJH/9.jpg',
+                context: 'https://i.ibb.co/nssTp8tZ/9-2.jpg',
+                details: 'Sometimes you need to blur the boundaries to see the true picture'
+            },
+            {
+                meditation: 'https://i.ibb.co/ZRgnk5t1/10.jpg',
+                context: 'https://i.ibb.co/qM9PKfsG/10-1.jpg',
+                details: 'Order emerges from chaos when you trust the process of life'
+            },
+            {
+                meditation: 'https://i.ibb.co/ZRN8ryJh/10.jpg',
+                context: 'https://i.ibb.co/ynkdmZWq/10-2.jpg',
+                details: 'The energy of life flows through you. Allow it to move freely'
+            },
+            {
+                meditation: 'https://i.ibb.co/Q73MLbtp/11.jpg',
+                context: 'https://i.ibb.co/PvjMYvks/11-1.jpg',
+                details: 'Your mind is a complex and beautiful universe. Study it with curiosity, not judgment'
+            },
+            {
+                meditation: 'https://i.ibb.co/v4vwQBmY/11.jpg',
+                context: 'https://i.ibb.co/R42BTq1K/11-2.jpg',
+                details: 'Truth is often found in the subtle details we miss in haste'
+            },
+            {
+                meditation: 'https://i.ibb.co/gQM2SLr/12.jpg',
+                context: 'https://i.ibb.co/nM5s3z0T/12-1.jpg',
+                details: 'Mindfulness is a continuous flow of attention to what is, without trying to change it'
+            }
+        ];
+
+        let currentImageIndex = 0;
+        let allImages = [];
+
+        // Function to preload images
+        function preloadImage(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => resolve(img);
+                img.onerror = () => {
+                    console.warn(`Failed to load image: ${url}`);
+                    const placeholder = new Image();
+                    placeholder.alt = 'Image not available';
+                    resolve(placeholder);
+                };
+                img.src = url;
+            });
+        }
+
+        // Generate gallery
+        async function generateGallery() {
+            const gallery = document.getElementById('gallery');
+            const collage = document.getElementById('collage');
+            
+            // Clear existing content
+            gallery.innerHTML = '<h2 class="section-title">VISUAL CONVERSATIONS</h2>';
+            collage.innerHTML = '';
+            
+            // Preload intro image
+            try {
+                const introImg = await preloadImage(artworks[5].meditation);
+                document.getElementById('intro-img').src = introImg.src;
+            } catch (error) {
+                console.error('Error loading intro image:', error);
+            }
+            
+            let paintingNumber = 1;
+            
+            // Generate artwork pairs
+            for (let i = 0; i < artworks.length; i++) {
+                const artwork = artworks[i];
+                
+                const pair = document.createElement('div');
+                pair.className = 'artwork-pair';
+                
+                // Create meditation image
+                const meditationImg = document.createElement('img');
+                meditationImg.alt = `Conversation ${paintingNumber}`;
+                meditationImg.onclick = () => openModal(i * 2);
+                
+                // Create context image
+                const contextImg = document.createElement('img');
+                contextImg.alt = `Conversation ${paintingNumber} in space`;
+                contextImg.onclick = () => openModal(i * 2 + 1);
+                
+                // Load images
+                preloadImage(artwork.meditation).then(img => { meditationImg.src = img.src; });
+                preloadImage(artwork.context).then(img => { contextImg.src = img.src; });
+                
+                pair.innerHTML = `
+                    <div class="artwork-item">
+                        <div class="artwork-image">
+                            <!-- Meditation image will be inserted here -->
+                        </div>
+                        <div class="artwork-info">
+                            <div class="artwork-number">${paintingNumber}</div>
+                            <p class="artwork-details">${artwork.details}</p>
+                        </div>
+                    </div>
+                    <div class="artwork-item">
+                        <div class="artwork-image">
+                            <!-- Context image will be inserted here -->
+                        </div>
+                        <div class="artwork-info">
+                            <p class="artwork-details">In the space of inner dialogue</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Insert images
+                pair.querySelector('.artwork-item:first-child .artwork-image').appendChild(meditationImg);
+                pair.querySelector('.artwork-item:last-child .artwork-image').appendChild(contextImg);
+                
+                gallery.appendChild(pair);
+                
+                // Collect all images for modal
+                allImages.push(artwork.meditation, artwork.context);
+                
+                // Add to collage (first 6 context images)
+                if (i < 6) {
+                    const collageItem = document.createElement('div');
+                    collageItem.className = 'collage-item';
+                    
+                    const collageImg = document.createElement('img');
+                    collageImg.alt = `Conversation ${paintingNumber} in space`;
+                    
+                    preloadImage(artwork.context).then(img => { collageImg.src = img.src; });
+                    
+                    collageItem.appendChild(collageImg);
+                    collage.appendChild(collageItem);
+                }
+                
+                paintingNumber++;
+            }
+        }
+
+        // Modal functions
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            
+            preloadImage(allImages[currentImageIndex]).then(img => {
+                modalImage.src = img.src;
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= allImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = allImages.length - 1;
+            }
+            
+            preloadImage(allImages[currentImageIndex]).then(img => {
+                document.getElementById('modalImage').src = img.src;
+            });
+        }
+
+        // Close modal when clicking outside image
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('modal');
+            if (modal.style.display === 'block') {
+                if (event.key === 'Escape') closeModal();
+                if (event.key === 'ArrowLeft') changeImage(-1);
+                if (event.key === 'ArrowRight') changeImage(1);
+            }
+        });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', function() {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+        });
+
+        // Smooth scrolling to gallery
+        document.querySelector('.scroll-indicator').addEventListener('click', function() {
+            document.getElementById('gallery').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Initialize gallery when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            generateGallery();
+        });
+    </script>
+</body>
+</html>
